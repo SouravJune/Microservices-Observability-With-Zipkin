@@ -1,0 +1,35 @@
+server:
+  port: 9095
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  config:
+    import: optional:configserver:http://localhost:8088
+
+  cloud:
+    gateway:
+      routes:
+        - id: COUPON-SERVICE
+          uri: lb://COUPON-SERVICE
+          predicates:
+            - Path=/couponapi/**
+
+        - id: PRODUCT-SERVICE
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/productapi/**
+
+
+#Actuator Endpoint Configuration:
+management:
+  #Prometheus Configuration:
+  observations:
+    key-values:
+      application: API-GATEWAY
+
+#Logging Visibility Configuration:
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
