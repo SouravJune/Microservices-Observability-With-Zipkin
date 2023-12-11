@@ -16,6 +16,8 @@ management:
       enabled: true
     health:
       show-details: ALWAYS
+    bus-refresh:
+      enable: true
   endpoints:
     web:
       exposure:
@@ -40,7 +42,7 @@ management:
 # using @RefreshScope annotation and need to hit /actuator/refresh
 # and we need to hit /actuator/refresh end point for all the running instance
 # so to solve this problem we have spring-cloud-bus using this we can
-# refresh any instance by hitting /actuator/bus-refresh and all the instance
+# refresh any instance by hitting /actuator/busrefresh and all the instance
 # will get the updated configuration.
 com:
   ms:
