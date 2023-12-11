@@ -16,8 +16,6 @@ management:
       enabled: true
     health:
       show-details: ALWAYS
-    bus-refresh:
-      enable: true
   endpoints:
     web:
       exposure:
@@ -47,4 +45,4 @@ management:
 com:
   ms:
     spring-cloud:
-      prop: local-bus-1
+      prop: local-bus-1234
